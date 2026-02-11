@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💘 San Valentín 💘</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Poppins', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff4d6d, #ff8fab, #ffc2d1);
+  background-size: 300% 300%;
+  animation: bgMove 8s ease infinite;
+  padding: 20px;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.card {
+  background: rgba(255,255,255,0.95);
+  padding: 30px 22px;
+  border-radius: 25px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  animation: pop 0.8s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.photo {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #ff4d6d;
+  box-shadow: 0 10px 25px rgba(255,77,109,0.6);
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h1 {
+  color: #ff4d6d;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 15px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#yes {
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  color: white;
+}
+
+#yes:active {
+  transform: scale(1.1);
+}
+
+#no {
+  background: #ddd;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <!-- FOTO PREGUNTA -->
+  <div class="photo">
+    <img src="photo-pregunta.jpeg" alt="Foto">
+  </div>
+
+  <h1>💖 ¿Te gustaría ser mi San Valentín? 💖</h1>
+
+  <p>
+    Prometo cuidarte, hacerte reír  
+    y quererte bonito todos los días 🥺💘
+  </p>
+
+  <div class="buttons">
+    <button id="yes">Sí 💕</button>
+    <button id="no">No 😢</button>
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+
+noBtn.addEventListener("touchstart", move);
+noBtn.addEventListener("mouseover", move);
+
+function move() {
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 120);
+  noBtn.style.position = "absolute";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+yesBtn.addEventListener("click", () => {
+  document.body.innerHTML = `
+  <div style="
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    font-family:Poppins, Arial;
+    background: linear-gradient(135deg, #ff4d6d, #ff8fab, #ffc2d1);
+    color:white;
+  ">
+    <div>
+      <div style="
+        width:180px;
+        height:180px;
+        border-radius:50%;
+        overflow:hidden;
+        border:5px solid white;
+        margin:0 auto 20px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.3);
+      ">
+        <img src="photo-respuesta.jpeg" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+
+      <h1>💘 SABÍA QUE DIRÍAS QUE SÍ MI REINA HERMOSA 💘</h1>
+
+      <p style="font-size:18px;">
+        Ahora oficialmente eres mi San Valentín 🥰<br>
+        Ahora oficialmente eres mi San Valentín 🥰<br>
+        Gracias por hacerme tan feliz siempre mi niña preciosa 💖
+      </p>
+    </div>
+  </div>
+  `;
+});
+</script>
+
+</body>
+</html>
